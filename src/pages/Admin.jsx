@@ -1,18 +1,30 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { TurnosContext } from "../context/TurnosContext";
 
 function Admin() {
   const { turnos, actualizarEstado, eliminarTurno } = useContext(TurnosContext);
+  const [filtro, setFiltro] = useState("todos");
+  const turnosFiltrados =
+    filtro === "todos"
+        ? turnos
+        : turnos.filter(turno => turno.estado === filtro);
 
   return (
     <div>
       <h2>Panel de administración</h2>
 
+      <div>
+        <button onClick={() => setFiltro("todos")}>Todos</button>
+        <button onClick={() => setFiltro("pendiente")}>Pendientes</button>
+        <button onClick={() => setFiltro("aprobado")}>Aprobados</button>
+        <button onClick={() => setFiltro("rechazado")}>Rechazados</button>
+      </div>
+
       {turnos.length === 0 && (
         <p>No hay turnos registrados</p>
       )}
 
-      {turnos.map(turno => (
+      {turnosFiltrados.map(turno => (
         <div key={turno.id}>
           <p><strong>Nombre:</strong> {turno.nombre}</p>
           <p><strong>Servicio:</strong> {turno.servicio}</p>

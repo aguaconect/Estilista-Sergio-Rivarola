@@ -1,8 +1,11 @@
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+
 function App() {
   return (
     <div>
-      <h1>Estilista Sergio Rivarola</h1>
-      <p>Web oficial + sistema de turnos</p>
+      <Navbar />
+      <Home />
     </div>
   );
 }

@@ -28,6 +28,12 @@ function Navbar() {
 
         {user && (
           <>
+            {user.role === "admin" && (
+              <li>
+                <Link to="/admin">Panel Admin</Link>
+              </li>
+            )}
+
             <li>
               {user.role === "admin" ? "Admin" : "Cliente"}: {user.email}
             </li>

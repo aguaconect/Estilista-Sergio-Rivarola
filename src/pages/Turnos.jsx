@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { TurnosContext } from "../context/TurnosContext";
 
 function Turnos() {
-  const { agregarTurno } = useContext(TurnosContext);
+  const { agregarTurno, turnos } = useContext(TurnosContext);
 
   const [nombre, setNombre] = useState("");
   const [servicio, setServicio] = useState("Corte");
@@ -70,6 +70,25 @@ function Turnos() {
       {enviado && (
         <p>✅ Turno enviado correctamente. Nos comunicaremos a la brevedad.</p>
       )}
+
+      <h3>Mis turnos</h3>
+
+      {turnos.length === 0 && <p>No tenés turnos registrados</p>}
+
+      {turnos.map(turno => (
+        <div key={turno.id}>
+          <p><strong>Servicio:</strong> {turno.servicio}</p>
+          <p><strong>Fecha:</strong> {turno.fecha}</p>
+          <p><strong>Hora:</strong> {turno.hora}</p>
+          <p>
+            <strong>Estado:</strong>{" "}
+            {turno.estado === "pendiente" && "⏳ Pendiente"}
+            {turno.estado === "aprobado" && "✅ Aprobado"}
+            {turno.estado === "rechazado" && "❌ Rechazado"}
+          </p>
+          <hr />
+        </div>
+      ))}
     </div>
   );
 }

@@ -26,9 +26,15 @@ export function TurnosProvider({ children }) {
     );
   }
 
+  function eliminarTurno(id) {
+    setTurnos(prev =>
+        prev.filter(turno => turno.id !== id)
+    );
+  }
+
   return (
     <TurnosContext.Provider
-      value={{ turnos, agregarTurno, actualizarEstado }}
+      value={{ turnos, agregarTurno, actualizarEstado, eliminarTurno }}
     >
       {children}
     </TurnosContext.Provider>

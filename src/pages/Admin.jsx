@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { TurnosContext } from "../context/TurnosContext";
 
 function Admin() {
-  const { turnos, actualizarEstado } = useContext(TurnosContext);
+  const { turnos, actualizarEstado, eliminarTurno } = useContext(TurnosContext);
 
   return (
     <div>
@@ -40,6 +40,13 @@ function Admin() {
               >
                 Rechazar
               </button>
+
+              <button
+                onClick={() => eliminarTurno(turno.id)}
+              >
+                🗑 Eliminar
+              </button>
+              
             </>
           )}
 

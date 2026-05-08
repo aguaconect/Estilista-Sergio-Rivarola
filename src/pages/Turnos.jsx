@@ -19,6 +19,7 @@ function Turnos() {
       servicio,
       fecha,
       hora,
+      estado: "pendiente",
     });
 
     setEnviado(true);

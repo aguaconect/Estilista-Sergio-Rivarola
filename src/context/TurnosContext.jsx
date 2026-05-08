@@ -16,8 +16,20 @@ export function TurnosProvider({ children }) {
     setTurnos(prev => [...prev, turno]);
   }
 
+  function actualizarEstado(id, nuevoEstado) {
+    setTurnos(prev =>
+      prev.map(turno =>
+        turno.id === id
+          ? { ...turno, estado: nuevoEstado }
+          : turno
+      )
+    );
+  }
+
   return (
-    <TurnosContext.Provider value={{ turnos, agregarTurno }}>
+    <TurnosContext.Provider
+      value={{ turnos, agregarTurno, actualizarEstado }}
+    >
       {children}
     </TurnosContext.Provider>
   );

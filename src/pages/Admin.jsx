@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { TurnosContext } from "../context/TurnosContext";
 
 function Admin() {
-  const { turnos } = useContext(TurnosContext);
+  const { turnos, actualizarEstado } = useContext(TurnosContext);
 
   return (
     <div>
@@ -18,6 +18,31 @@ function Admin() {
           <p><strong>Servicio:</strong> {turno.servicio}</p>
           <p><strong>Fecha:</strong> {turno.fecha}</p>
           <p><strong>Hora:</strong> {turno.hora}</p>
+          <p>
+            <strong>Estado:</strong>{" "}
+            {turno.estado}
+          </p>
+
+          {turno.estado === "pendiente" && (
+            <>
+              <button
+                onClick={() =>
+                  actualizarEstado(turno.id, "aprobado")
+                }
+              >
+                Aprobar
+              </button>
+
+              <button
+                onClick={() =>
+                  actualizarEstado(turno.id, "rechazado")
+                }
+              >
+                Rechazar
+              </button>
+            </>
+          )}
+
           <hr />
         </div>
       ))}

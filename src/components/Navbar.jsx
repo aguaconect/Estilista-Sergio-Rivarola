@@ -8,15 +8,10 @@ function Navbar() {
       </div>
 
       <ul>
-        <li>
-          <Link to="/">Inicio</Link>
-        </li>
-        <li>
-          <Link to="/galeria">Galería</Link>
-        </li>
-        <li>
-          <Link to="/turnos">Turnos</Link>
-        </li>
+        <li><Link to="/">Inicio</Link></li>
+        <li><Link to="/galeria">Galería</Link></li>
+        <li><Link to="/turnos">Turnos</Link></li>
+        <li><Link to="/login">Ingresar</Link></li>
       </ul>
     </nav>
   );
